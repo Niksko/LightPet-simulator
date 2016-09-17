@@ -7,7 +7,7 @@ var ledArray = [
   {
     id: 0,
     size: 60,
-    color: Color().blue(255),
+    color: Color().blue(255).red(50).green(200),
     position: {
       left: 30,
       top: 100
