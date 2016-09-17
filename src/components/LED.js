@@ -4,7 +4,9 @@ import React, { Component } from 'react';
 // These LEDs should have their color updated via some inline CSS
 class LED extends Component {
   render() {
-    <div className="LED" />
+    return (
+      <div className="LED" style={this.props.style} />
+    );
   }
 }
 
