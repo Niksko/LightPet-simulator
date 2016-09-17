@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+.LEDContainer {
+  position: relative;
 }
 
+.LED {
+  position: relative;
 }
