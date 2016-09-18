@@ -33,14 +33,31 @@ var ledArray = [
   }
 ]
 
-class App extends Component {
-  render() {
+var App = React.createClass({
+  alterColors: function() {
+    ledArray.forEach((ledObj, index, array) => {
+      ledObj.color = ledObj.color.clone().rotate(1);
+    });
+    this.setState({leds: ledArray});
+  },
+
+  getInitialState: function() {
+      return {
+        leds: ledArray
+      };
+  },
+
+  componentDidMount: function() {
+    setInterval(this.alterColors, 10);
+  },
+
+  render: function() {
     return (
       <div className="App">
-        <LEDContainer leds={ledArray}/>
+        <LEDContainer leds={this.state.leds}/>
       </div>
     );
   }
-}
+})
 
 export default App;
