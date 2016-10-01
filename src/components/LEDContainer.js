@@ -11,15 +11,13 @@ var LEDContainer = React.createClass({
 
   componentWillMount: function() {
     if (this.props.layout === 'concentric') {
-      var ledPositions = [];
       var totalLEDs = this.props.leds.length;
+      var ledPositions = concentricLayout(totalLEDs);
       this.props.leds.forEach(function(value, index, array) {
         // Get the position object
-        var position = concentricLayout(value.id, totalLEDs);
-        position.x = String(100 * (position.x + 1) / 2) + '%';
-        position.y = String(100 * (position.y + 1) / 2) + '%';
-        // Push onto our state
-        ledPositions.push(position);
+        var position = ledPositions[index];
+        position.x = String(100 * position.x) + '%';
+        position.y = String(100 * position.y) + '%';
       }, this);
       this.setState({ledPositions: ledPositions});
     }

@@ -1,11 +1,12 @@
 // Lay out the LEDs in concentric circles based on a fixed number of LEDs per
-// circle. Values returned are between -1 and 1 in x and y directions, and should
+// circle. Values returned are between 0 and 1 in x and y directions, and should
 // be scaled appropriately to the width and height of the element that the LEDs
 // are being placed inside of
 
 const RADIANS_IN_CIRCLE = 2 * Math.PI;
 
-var concentricLayout = function(id, totalLEDs) {
+// Figure out the location for a single LED
+var concentricLayoutSingle = function(id, totalLEDs) {
   // Set up the constant circle sizes
   const circleSizes = [3, 6, 12, 18];
 
@@ -49,12 +50,21 @@ var concentricLayout = function(id, totalLEDs) {
   // Use this value to compute the angle that the led should be at
   var ledAngle = angleIncrement * circleIndex;
   // Compute and return the coordinates
-  var x = circleRadius * Math.cos(ledAngle);
-  var y = circleRadius * Math.sin(ledAngle);
+  var x = (circleRadius * Math.cos(ledAngle) + 1) / 2;
+  var y = (circleRadius * Math.sin(ledAngle) + 1) / 2;
   return {
     x: x,
     y: y
   };
+}
+
+// Take the total number of LEDs and figure out the locations of all the LEDs. Return as an array
+var concentricLayout = function(totalLEDs) {
+  var positionArray = [];
+  for (var i = 0; i < totalLEDs; i++) {
+    positionArray.push(concentricLayoutSingle(i, totalLEDs));
+  }
+  return positionArray;
 }
 
 export default concentricLayout;
