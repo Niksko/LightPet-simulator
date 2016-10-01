@@ -15,8 +15,8 @@ class LED extends Component {
   render() {
     var boxShadowString = computeBoxShadow(this.props.color, this.props.size);
     var style = {
-      top: this.props.position.top,
-      left: this.props.position.left,
+      top: this.props.position.y,
+      left: this.props.position.x,
       margin: '0 auto',
       backgroundColor: this.props.color.rgbString(),
       width: this.props.size,

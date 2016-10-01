@@ -4,8 +4,10 @@
 
 .LEDContainer {
   position: relative;
+  width: 500px;
+  height: 500px;
 }
 
 .LED {
-  position: relative;
+  position: absolute;
 }

@@ -3,35 +3,15 @@ import Color from 'color';
 import LEDContainer from './components/LEDContainer.js';
 import './App.css';
 
-var ledArray = [
-  {
-    id: 0,
-    size: 60,
-    color: Color().blue(255).red(50).green(200),
-    position: {
-      left: 30,
-      top: 100
-    }
-  },
-  {
-    id: 1,
-    size: 30,
-    color: Color().red(120),
-    position: {
-      left: 200,
-      top: 600
-    }
-  },
-  {
-    id: 2,
-    size: 45,
-    color: Color().green(20),
-    position: {
-      left: 600,
-      top: 800
-    }
-  }
-]
+var numLeds = 9;
+var ledArray = [];
+for (var i = 0; i < numLeds; i++) {
+  var col = Color().red(255 * Math.random()).green(255 * Math.random()).green(255 * Math.random());
+  ledArray.push({
+    id: i,
+    color: col
+  });
+}
 
 var App = React.createClass({
   alterColors: function() {
@@ -43,7 +23,8 @@ var App = React.createClass({
 
   getInitialState: function() {
       return {
-        leds: ledArray
+        leds: ledArray,
+        layout: 'concentric'
       };
   },
 
@@ -54,7 +35,7 @@ var App = React.createClass({
   render: function() {
     return (
       <div className="App">
-        <LEDContainer leds={this.state.leds}/>
+        <LEDContainer leds={this.state.leds} layout={this.state.layout}/>
       </div>
     );
   }
