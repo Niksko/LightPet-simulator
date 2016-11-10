@@ -48,3 +48,9 @@ jspm_packages
 
 # Tern config
 .tern-project
+
+# ESLint config
+.eslintrc.js
+
+# Yarn lockfile
+yarn.lock
