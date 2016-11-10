@@ -1,13 +1,22 @@
+html, body, div#root {
+  height: 100%;
+}
 .App {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  height: 100%;
+}
+
+.row-1 {
+  flex-direction: row;
+  flex: 3;
+}
+
+.row-2 {
+  flex-direction: column;
+  flex: 2;
 }
 
 .LEDContainer {
-  position: relative;
-  width: 500px;
-  height: 500px;
-}
-
-.LED {
-  position: absolute;
 }
