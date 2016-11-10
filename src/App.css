@@ -3,20 +3,20 @@ html, body, div#root {
 }
 .App {
   display: flex;
-  flex-direction: column;
+  flex-flow: row wrap;
   align-items: stretch;
   height: 100%;
 }
 
-.row-1 {
-  flex-direction: row;
+.column {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.column-1 {
   flex: 3;
 }
 
-.row-2 {
-  flex-direction: column;
-  flex: 2;
-}
-
-.LEDContainer {
+.column-2 {
+  flex: 1;
 }
