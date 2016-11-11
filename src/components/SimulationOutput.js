@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import ReactPIXI from 'react-pixi';
+import PIXI from 'pixi.js';
 
 var SimulationOutput = React.createClass({
   render: function() {
