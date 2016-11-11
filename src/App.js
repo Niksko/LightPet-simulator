@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import 'SimulationOutput';
-import 'DataTimeline';
-import 'SettingsPanel';
-import 'SimulationInput';
+import DataTimeline from './components/DataTimeline.js';
+import SettingsPanel from './components/SettingsPanel.js';
+import SimulationInput from './components/SimulationInput.js';
+import SimulationOutput from './components/SimulationOutput.js';
 import './App.css';
 
 var App = React.createClass({

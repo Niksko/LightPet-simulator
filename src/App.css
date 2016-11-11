@@ -9,6 +9,7 @@ html, body, div#root {
 }
 
 .column {
+  display: flex;
   flex-direction: column;
   align-items: stretch;
 }
@@ -19,4 +20,24 @@ html, body, div#root {
 
 .column-2 {
   flex: 1;
+}
+
+.main-component {
+  border: 2px solid #000;
+}
+
+.SimulationOutput {
+  flex: 3;
+}
+
+.DataTimeline {
+  flex: 2;
+}
+
+.SettingsPanel {
+  flex: 3;
+}
+
+.SimulationInput {
+  flex: 2;
 }
