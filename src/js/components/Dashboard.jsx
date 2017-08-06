@@ -4,7 +4,7 @@
 'use-strict';
 import React from 'react';
 import AppBar from 'react-toolbox/lib/app_bar';
-import Card from 'react-toolbox/lib/card';
+import SettingsDrawer from './SettingsDrawer';
 
 import styles from './Dashboard.css';
 
@@ -16,10 +16,12 @@ class Dashboard extends React.Component {
           title="LightPet Simulator"
           className = {styles.appbar} >
         </AppBar>
+        <SettingsDrawer/>
       </div>
     );
   };
 }
+
 
 Dashboard.contextTypes = {
   store: React.PropTypes.object
