@@ -2,10 +2,9 @@
   "name": "lightpet-simulator",
   "version": "0.0.1",
   "description": "Simulator for the light pet project",
-  "main": "src/server.js",
   "scripts": {
     "build": "webpack --progress",
-    "dev": "webpack --progress --color --watch & nodemon",
+    "dev": "webpack --progress --color --watch",
     "test": "mocha --require babel-polyfill --compilers js:babel-register"
   },
   "repository": {
