@@ -1,19 +1,23 @@
 import * as React from 'react';
 import './App.css';
-
-const logo = require('./logo.svg');
+import { Stage, Layer } from 'react-konva';
+import * as Konva from 'konva';
+import LED from './components/presentational/led';
 
 class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
+        <Stage width={window.innerWidth} height={window.innerHeight}>
+          <Layer>
+            <LED
+              size={10}
+              x={100}
+              y={100}
+              color={Konva.Util.getRandomColor()}
+            />
+          </Layer>
+        </Stage>
       </div>
     );
   }
