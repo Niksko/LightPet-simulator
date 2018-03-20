@@ -30,3 +30,5 @@ function LED({size, x, y, color}: Props) {
     </Group>
   );
 }
+
+export default LED;
