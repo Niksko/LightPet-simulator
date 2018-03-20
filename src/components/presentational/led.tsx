@@ -8,15 +8,14 @@ export interface Props {
   color: string;
 }
 
-function LED({size, x, y}: Props) {
+function LED({size, x, y, color}: Props) {
   return (
     <Group
       x={x}
       y={y}
     >
       <Circle
-        width={size}
-        height={size}
+        radius={size / 2}
         fill={color}
         x={0}
         y={0}
