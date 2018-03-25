@@ -128,3 +128,6 @@ fabric.properties
 
 # Add bundle.js to gitignore
 src/public/assets/bundle.js
+
+# Add .idea folder
+.idea
