@@ -1,33 +1,23 @@
 import * as React from 'react';
-import { Circle, Rect, Group } from 'react-konva';
+import { Image } from 'react-konva';
 
 export interface Props {
   size: number;
   x: number;
   y: number;
-  color: string;
+  red: number;
+  green: number;
+  blue: number;
+  image: typeof HTMLImageElement;
 }
 
-function LED({size, x, y, color}: Props) {
+function LED({size, x, y, red, green, blue, image}: Props) {
   return (
-    <Group
+    <Image
+      image={image.prototype}
       x={x}
       y={y}
-    >
-      <Circle
-        radius={size / 2}
-        fill={color}
-        x={0}
-        y={0}
-      />
-      <Rect
-        width={size}
-        height={size}
-        fill={color}
-        x={-size / 2}
-        y={0}
-      />
-    </Group>
+    />
   );
 }
 
