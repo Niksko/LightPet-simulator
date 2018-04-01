@@ -1,6 +1,7 @@
 import * as React from 'react';
 import GraphDetailViewer from '../presentational/graphDetailViewer';
 import { DataPoint } from '../../interfaces/DataPoint';
+import GraphOverview from '../presentational/graphOverview';
 
 export interface Props {
   data: Array<DataPoint>;
@@ -17,16 +18,33 @@ class GraphView extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {dataStart: 0, dataEnd: 100};
+    this.handleDrag = this.handleDrag.bind(this);
   }
-  render() {
+
+  public render() {
     return (
-      <GraphDetailViewer
-        width={this.props.width}
-        height={this.props.height}
-        data={this.props.data.slice(this.state.dataStart, this.state.dataEnd)}
-        stroke={'#ff0000'}
-      />
+      <div>
+        <GraphOverview
+          data={this.props.data}
+          width={this.props.width}
+          height={this.props.height}
+          stroke={'#00ff00'}
+          updateDetailEndpointsFunction={this.handleDrag}
+        />
+        <GraphDetailViewer
+          width={this.props.width}
+          height={this.props.height}
+          data={this.props.data.slice(this.state.dataStart, this.state.dataEnd)}
+          stroke={'#ff0000'}
+        />
+      </div>
     );
+  }
+
+  private handleDrag(x: number, y: number) {
+    this.setState({
+      dataStart: x / 4
+    });
   }
 }
 
