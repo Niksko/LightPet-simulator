@@ -13,6 +13,7 @@ function LED({size, x, y, color}: Props) {
     <Group
       x={x}
       y={y}
+      draggable={true}
     >
       <Circle
         radius={size / 2}
