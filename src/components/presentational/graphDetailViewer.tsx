@@ -12,7 +12,7 @@ export interface Props {
 function GraphDetailViewer({ data, width, height, stroke }: Props) {
   return (
     <LineChart width={width} height={height} data={data}>
-      <Line type={'monotone'} dataKey={DataKey} stroke={stroke} />
+      <Line type={'monotone'} dataKey={DataKey} stroke={stroke} isAnimationActive={false}/>
     </LineChart>
   );
 }
