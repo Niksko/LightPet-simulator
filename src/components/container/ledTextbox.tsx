@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { ChangeEvent, MouseEvent } from 'react';
 
+const validTextboxInputRegex = /^\d+$/;
+
 export interface Props {
   initialNumberOfLeds: number;
   updateNumberOfLeds: (newValue: number) => void;
@@ -49,18 +51,19 @@ class LedTextbox extends React.Component<Props, State> {
   }
 
   private handleUpdateClick(event: MouseEvent<HTMLButtonElement>): void {
-    const updatedNumberOfLeds = parseInt(this.state.currentNumberOfLeds, 10);
-
-    if (isNaN(updatedNumberOfLeds)) {
+    if (!validTextboxInputRegex.test(this.state.currentNumberOfLeds)) {
       this.setState({
         errorMessage: 'Unable to parse your input as an integer. Please enter integers.'
       });
-    } else {
-      this.setState({
-        errorMessage: ''
-      });
-      this.props.updateNumberOfLeds(updatedNumberOfLeds);
+      return;
     }
+
+    const updatedNumberOfLeds = parseInt(this.state.currentNumberOfLeds, 10);
+
+    this.setState({
+      errorMessage: ''
+    });
+    this.props.updateNumberOfLeds(updatedNumberOfLeds);
   }
 }
 
