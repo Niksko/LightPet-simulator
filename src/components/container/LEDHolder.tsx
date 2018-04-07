@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { Stage, Layer } from 'react-konva';
 import LED from '../presentational/led';
+import LEDData from '../../interfaces/LEDData';
 
 export interface Props {
   width: number;
   height: number;
   ledSize: number;
-  leds: Array<[number, number, string]>;
+  leds: Array<LEDData>;
 }
 
 class LEDHolder extends React.Component<Props> {
@@ -19,9 +20,9 @@ class LEDHolder extends React.Component<Props> {
               <LED
                 key={index}
                 size={this.props.ledSize}
-                x={value[0]}
-                y={value[1]}
-                color={value[2]}
+                x={value.x}
+                y={value.y}
+                color={value.color}
               />
             );
           })}

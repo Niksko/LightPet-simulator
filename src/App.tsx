@@ -5,13 +5,18 @@ import LEDHolder from './components/container/LEDHolder';
 import { DataPoint, DataKey }  from './interfaces/DataPoint';
 import * as Moment from 'moment';
 import GraphView from './components/container/GraphView';
+import LEDData from './interfaces/LEDData';
 
 const holderWidth = 500;
 const holderHeight = 500;
 
-let ledArray: Array<[number, number, string]> = [];
+let ledArray: Array<LEDData> = [];
 for (let i = 0; i < 10; i++) {
-  ledArray.push([Math.random() * holderWidth, Math.random() * holderHeight, Konva.Util.getRandomColor()]);
+  ledArray.push({
+    x: Math.random() * holderWidth,
+    y: Math.random() * holderHeight,
+    color: Konva.Util.getRandomColor()
+  });
 }
 
 let dummyData: Array<DataPoint> = [];
