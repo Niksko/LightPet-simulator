@@ -6,6 +6,7 @@ import { DataPoint, DataKey }  from './interfaces/DataPoint';
 import * as Moment from 'moment';
 import GraphView from './components/container/GraphView';
 import LEDData from './interfaces/LEDData';
+import LedTextbox from './components/container/ledTextbox';
 
 const holderWidth = 500;
 const holderHeight = 500;
@@ -40,7 +41,10 @@ class App extends React.Component<Props, State> {
   render() {
     return (
       <div className="App">
-        <LEDHolder width={holderWidth} height={holderHeight} ledSize={30} leds={ledArray}/>
+        <div>
+          <LEDHolder width={holderWidth} height={holderHeight} ledSize={30} leds={ledArray}/>
+          <LedTextbox initialNumberOfLeds={20}/>
+        </div>
         <GraphView width={400} height={400} data={dummyData} />
       </div>
     );
