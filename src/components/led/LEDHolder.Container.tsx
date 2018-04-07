@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Stage, Layer } from 'react-konva';
-import LED from '../presentational/led';
+import LED from './LED.Presentational';
 import LEDData from '../../interfaces/LEDData';
 
 export interface Props {

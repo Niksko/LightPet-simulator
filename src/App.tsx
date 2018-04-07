@@ -1,12 +1,12 @@
 import * as React from 'react';
 import './App.css';
 import * as Konva from 'konva';
-import LEDHolder from './components/container/LEDHolder';
+import LEDHolder from './components/led/LEDHolder.Container';
 import { DataPoint, DataKey }  from './interfaces/DataPoint';
 import * as Moment from 'moment';
-import GraphView from './components/container/GraphView';
+import GraphView from './components/dataVisualisation/GraphView.Container';
 import LEDData from './interfaces/LEDData';
-import LedTextbox from './components/container/ledTextbox';
+import LedTextbox from './components/led/LedTextbox.Container';
 
 const holderWidth = 500;
 const holderHeight = 500;

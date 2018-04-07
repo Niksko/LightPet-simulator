@@ -1,7 +1,7 @@
 import * as React from 'react';
-import GraphDetailViewer from '../presentational/graphDetailViewer';
+import GraphDetailViewer from './GraphDetailViewer.Presentational';
 import { DataPoint } from '../../interfaces/DataPoint';
-import GraphOverview from '../presentational/graphOverview';
+import GraphOverview from './GraphOverview.Presentational';
 
 export interface Props {
   data: Array<DataPoint>;
