@@ -7,6 +7,7 @@ import * as Moment from 'moment';
 import GraphView from './components/dataVisualisation/GraphView.Container';
 import LEDData from './interfaces/LEDData';
 import LedTextbox from './components/led/LedTextbox.Container';
+import { LayoutSelector, LedArranger } from './components/led/LayoutSelector.Container';
 
 const holderWidth = 500;
 const holderHeight = 500;
@@ -54,6 +55,7 @@ class App extends React.Component<Props, State> {
         <div>
           <LEDHolder width={holderWidth} height={holderHeight} ledSize={30} leds={this.state.ledArray}/>
           <LedTextbox initialNumberOfLeds={20} updateNumberOfLeds={this.updateNumberOfLeds}/>
+          <LayoutSelector onLayoutSelected={this.updateLedArrangement}/>
         </div>
         <GraphView width={400} height={400} data={dummyData} />
       </div>
@@ -63,6 +65,23 @@ class App extends React.Component<Props, State> {
   private updateNumberOfLeds(newNumberOfLeds: number): void {
     this.setState({
       ledArray: generateLedArray(newNumberOfLeds)
+    });
+  }
+
+  private updateLedArrangement = (ledArranger: LedArranger): void => {
+    // TODO: Make the number of leds dynamic instead of fixed
+    const numberOfLeds = 12;
+    let ledArray: Array<LEDData> = [];
+    let ledPositions = ledArranger(numberOfLeds);
+    for (let i = 0; i < numberOfLeds; i++) {
+      ledArray.push({
+        x: ledPositions[i].x * holderWidth,
+        y: ledPositions[i].y * holderHeight,
+        color: Konva.Util.getRandomColor()
+      });
+    }
+    this.setState({
+      ledArray
     });
   }
 }
