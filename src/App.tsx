@@ -70,7 +70,7 @@ class App extends React.Component<Props, State> {
 
   private updateLedArrangement = (ledArranger: LedArranger): void => {
     // TODO: Make the number of leds dynamic instead of fixed
-    const numberOfLeds = 12;
+    const numberOfLeds = this.state.ledArray.length;
     let ledArray: Array<LEDData> = [];
     let ledPositions = ledArranger(numberOfLeds);
     for (let i = 0; i < numberOfLeds; i++) {
