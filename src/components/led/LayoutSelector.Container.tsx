@@ -24,11 +24,12 @@ const gridLayout: LedArranger = (numberOfLedsToLayOut) => {
 };
 
 const circleLayout: LedArranger = (numberOfLedsToLayOut) => {
+  const circleRadius = 0.4;
   const ledPositions: Array<Point> = [];
   for (let angle = 0; angle < 2 * Math.PI; angle += (2 * Math.PI / numberOfLedsToLayOut)) {
     ledPositions.push({
-      x: (Math.cos(angle) / 2) + 0.5,
-      y: (Math.sin(angle) / 2) + 0.5
+      x: (Math.cos(angle) / (1 / circleRadius)) + 0.5,
+      y: (Math.sin(angle) / (1 / circleRadius)) + 0.5
     });
   }
   return ledPositions;
