@@ -8,6 +8,10 @@ import GraphView from './components/dataVisualisation/GraphView.Container';
 import LEDData from './interfaces/LEDData';
 import LedTextbox from './components/led/LedTextbox.Container';
 import { LayoutSelector, LedArranger } from './components/led/LayoutSelector.Container';
+import { StoreState } from 'types';
+import { connect, Dispatch } from 'react-redux';
+import * as actions from './actions/actions';
+import {UPDATE_NUMBER_OF_LEDS} from './constants';
 
 const holderWidth = 500;
 const holderHeight = 500;
@@ -37,6 +41,28 @@ export interface State {
   dataEnd: number;
   ledArray: Array<LEDData>;
 }
+
+const mapStateToLEDHolderProps = ({ledArray}: StoreState) => {
+  return {
+    leds: ledArray
+  };
+};
+
+const mapDispatchToLedTextboxProps = (dispatch: Dispatch<actions.UpdateLedAction>) => {
+  return {
+    updateNumberOfLeds: (newNumberOfLeds: number) => dispatch(actions.updateNumberOfLeds(newNumberOfLeds))
+  };
+};
+
+const mapDispatchToLayoutSelectorPros = (dispatch: Dispatch<actions.UpdateLedAction>) => {
+  return {
+    onLayoutSelected: (newLedArranger: LedArranger) => dispatch(actions.updateLedLayout(newLedArranger))
+  };
+};
+
+const ConnectedLEDHolder = connect(mapStateToLEDHolderProps, )(LEDHolder);
+const ConnectedLedTextbox = connect(, mapDispatchToLedTextboxProps)(LedTextbox);
+const ConnectedLayoutSelector = connect(undefined, )
 
 class App extends React.Component<Props, State> {
   constructor(props: Props) {
