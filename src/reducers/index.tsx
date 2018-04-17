@@ -7,6 +7,19 @@ import * as Konva from 'konva';
 
 type LedUpdateFunction = (numberOfLeds: number, ledArranger: LedArranger) => Array<LEDData>;
 
+const ledUpdateFunction: LedUpdateFunction = (numberOfLeds: number, ledArranger: LedArranger) => {
+  const ledPositions = ledArranger(numberOfLeds);
+  const ledArray: Array<LEDData> = [];
+  for (let i = 0; i < numberOfLeds; i++) {
+    ledArray.push({
+      x: ledPositions[i].x,
+      y: ledPositions[i].y,
+      color: Konva.Util.getRandomColor()
+    });
+  }
+  return ledArray;
+};
+
 export function updateLed(state: StoreState, action: UpdateLedAction): StoreState {
   let newLedArray: Array<LEDData>;
   switch (action.type) {
@@ -20,16 +33,3 @@ export function updateLed(state: StoreState, action: UpdateLedAction): StoreStat
       return state;
   }
 }
-
-const ledUpdateFunction: LedUpdateFunction = (numberOfLeds: number, ledArranger: LedArranger) => {
-  const ledPositions = ledArranger(numberOfLeds);
-  const ledArray: Array<LEDData> = [];
-  for (let i = 0; i < numberOfLeds; i++) {
-    ledArray.push({
-      x: ledPositions[i].x,
-      y: ledPositions[i].y,
-      color: Konva.Util.getRandomColor()
-    });
-  }
-  return ledArray;
-};

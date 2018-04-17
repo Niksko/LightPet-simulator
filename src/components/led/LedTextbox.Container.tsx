@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { ChangeEvent, MouseEvent } from 'react';
+import { UpdateNumberOfLeds } from '../../actions/actions';
 
 const validTextboxInputRegex = /^\d+$/;
 
 export interface Props {
   initialNumberOfLeds: number;
-  updateNumberOfLeds: (newValue: number) => void;
+  updateNumberOfLeds: (newValue: number) => UpdateNumberOfLeds;
 }
 
 export interface State {

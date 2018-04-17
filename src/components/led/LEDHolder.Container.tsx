@@ -20,8 +20,8 @@ class LEDHolder extends React.Component<Props> {
               <LED
                 key={index}
                 size={this.props.ledSize}
-                x={value.x}
-                y={value.y}
+                x={value.x * this.props.width}
+                y={value.y * this.props.height}
                 color={value.color}
               />
             );

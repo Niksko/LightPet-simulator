@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { ChangeEvent } from 'react';
+import { UpdateLedLayout } from '../../actions/actions';
 
-type Point = {
+export type Point = {
   x: number;
   y: number;
 };
@@ -47,7 +48,7 @@ const LAYOUTS = {
 };
 
 export interface Props {
-  onLayoutSelected: (ledArranger: LedArranger) => void;
+  onLayoutSelected: (ledArranger: LedArranger) => UpdateLedLayout;
 }
 
 export interface State {
