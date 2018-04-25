@@ -40,9 +40,9 @@ const mapDispatchToLayoutSelectorProps = (dispatch: Dispatch<actions.UpdateLedAc
   };
 };
 
-const mapStateToGraphViewProps = ({data}: StoreState) => {
+const mapStateToGraphViewProps = ({graphState}: StoreState) => {
   return {
-    data
+    data: graphState.data
   };
 };
 
