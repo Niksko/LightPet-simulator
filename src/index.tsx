@@ -7,7 +7,6 @@ import { StoreState } from './types';
 import { createStore } from 'redux';
 import { updateLed } from './reducers';
 import { Provider } from 'react-redux';
-import * as Konva from 'konva';
 import { randomLayout } from './ledArrangers';
 import { DataKey, DataPoint } from './interfaces/DataPoint';
 import * as Moment from 'moment';
@@ -23,10 +22,6 @@ const store = createStore<StoreState>(updateLed, {
   dataStart: 0,
   dataEnd: 100,
   data: initialData,
-  ledArray: randomLayout(initialNumberOfLeds)
-    .map(value => {
-      return { x: value.x, y: value.y, color: Konva.Util.getRandomColor() };
-    }),
   ledArranger: randomLayout,
   numberOfLeds: initialNumberOfLeds
 });

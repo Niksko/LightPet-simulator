@@ -8,6 +8,7 @@ import { LayoutSelector, LedArranger } from './components/led/LayoutSelector.Con
 import { StoreState } from './types';
 import { connect, Dispatch } from 'react-redux';
 import * as actions from './actions/actions';
+import { ledUpdateSelector } from './selectors';
 
 const holderWidth = 500;
 const holderHeight = 500;
@@ -21,9 +22,9 @@ export interface State {
   ledArray: Array<LEDData>;
 }
 
-const mapStateToLEDHolderProps = ({ledArray}: StoreState) => {
+const mapStateToLEDHolderProps = (state: StoreState) => {
   return {
-    leds: ledArray
+    leds: ledUpdateSelector(state)
   };
 };
 
