@@ -9,6 +9,7 @@ export type Point = {
 
 export type LedArranger = (numberOfLedsToLayout: number) => Array<Point>;
 
+// TODO: Split these out into a module for max reuse
 const gridLayout: LedArranger = (numberOfLedsToLayOut) => {
   const gridSize = Math.ceil(Math.sqrt(numberOfLedsToLayOut));
   const ledPositions: Array<Point> = [];
@@ -36,7 +37,22 @@ const circleLayout: LedArranger = (numberOfLedsToLayOut) => {
   return ledPositions;
 };
 
+const randomLayout: LedArranger = (numberOfLedsToLayout) => {
+  const ledPositions: Array<Point> = [];
+  for (let i = 0; i < numberOfLedsToLayout; i++) {
+    ledPositions.push({
+      x: Math.random(),
+      y: Math.random()
+    });
+  }
+  return ledPositions;
+};
+
 const LAYOUTS = {
+  'random': {
+    description: 'Random layout',
+    arrangeLeds: randomLayout
+  },
   'grid': {
     description: 'Grid layout',
     arrangeLeds: gridLayout
