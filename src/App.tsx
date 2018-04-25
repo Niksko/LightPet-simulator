@@ -1,8 +1,6 @@
 import * as React from 'react';
 import './App.css';
 import LEDHolder from './components/led/LEDHolder.Container';
-import { DataPoint, DataKey }  from './interfaces/DataPoint';
-import * as Moment from 'moment';
 import GraphView from './components/dataVisualisation/GraphView.Container';
 import LEDData from './interfaces/LEDData';
 import LedTextbox from './components/led/LedTextbox.Container';
@@ -13,11 +11,6 @@ import * as actions from './actions/actions';
 
 const holderWidth = 500;
 const holderHeight = 500;
-
-let dummyData: Array<DataPoint> = [];
-for (let i = 0; i < 100; i++) {
-  dummyData.push({ timestamp: Moment(), [DataKey]: Math.random()});
-}
 
 export interface Props {
 }
@@ -46,9 +39,16 @@ const mapDispatchToLayoutSelectorProps = (dispatch: Dispatch<actions.UpdateLedAc
   };
 };
 
+const mapStateToGraphViewProps = ({data}: StoreState) => {
+  return {
+    data
+  };
+};
+
 const ConnectedLEDHolder = connect(mapStateToLEDHolderProps)(LEDHolder);
 const ConnectedLedTextbox = connect(null, mapDispatchToLedTextboxProps)(LedTextbox);
 const ConnectedLayoutSelector = connect(null, mapDispatchToLayoutSelectorProps)(LayoutSelector);
+const ConnectedGraphView = connect(mapStateToGraphViewProps)(GraphView);
 
 class App extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -63,7 +63,7 @@ class App extends React.Component<Props, State> {
           <ConnectedLedTextbox initialNumberOfLeds={20}/>
           <ConnectedLayoutSelector/>
         </div>
-        <GraphView width={400} height={400} data={dummyData} />
+        <ConnectedGraphView width={400} height={400} />
       </div>
     );
   }
